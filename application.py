@@ -7,12 +7,12 @@ load_dotenv()
 
 
 application = Flask(__name__)
-@app.route('/')
+@application.route('/')
 def start():
     return "API IS RUNNING!"
 
 
-@app.route('/accessDB/<event>')
+@application.route('/accessDB/<event>')
 def accessDB(event):
     url: str = os.environ.get('SUPABASE_URL')
     key: str = os.environ.get('SUPABASE_KEY')
@@ -29,7 +29,7 @@ def accessDB(event):
     return event_values
 
 # API endpoint
-@app.route('/api/dummy', methods=['GET'])
+@application.route('/api/dummy', methods=['GET'])
 def hello():
     event = request.args.get('event')
     #print(event)
@@ -65,7 +65,7 @@ def organize_event_data(event_values):
     }
     return formatted_data
     
-@app.route('/api/endpoint', methods=['GET'])
+@application.route('/api/endpoint', methods=['GET'])
 def format_event():
     event = request.args.get('event')
     event_values = accessDB(event)  # Assuming this function is defined elsewhere
