@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-app = Flask(__name__)
+application = Flask(__name__)
 @app.route('/')
 def start():
     return "API IS RUNNING!"
@@ -76,5 +76,5 @@ def format_event():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000)
+    application.run(host='0.0.0.0', port=8000)
 
